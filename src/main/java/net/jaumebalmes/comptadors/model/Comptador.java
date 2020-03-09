@@ -22,7 +22,8 @@ public class Comptador {
     @ManyToOne
     Client client;
 
-    Long ultimaLecturaFacturadaId;
+    @OneToOne
+    Lectura ultimaLecturaFacturada;
 
     public List<Lectura> getLectures() {
         return lectures;
@@ -40,12 +41,12 @@ public class Comptador {
         this.client = client;
     }
 
-    public Long getUltimaLecturaFacturadaId() {
-        return ultimaLecturaFacturadaId;
+    public Lectura getUltimaLecturaFacturada() {
+        return ultimaLecturaFacturada;
     }
 
-    public void setUltimaLecturaFacturadaId(Long ultimaLecturaFacturadaId) {
-        this.ultimaLecturaFacturadaId = ultimaLecturaFacturadaId;
+    public void setUltimaLecturaFacturada(Lectura ultimaLecturaFacturadaId) {
+        this.ultimaLecturaFacturada = ultimaLecturaFacturadaId;
     }
 
     public Comptador() {
@@ -82,4 +83,5 @@ public class Comptador {
     public void setCodi(String codi) {
         this.codi = codi;
     }
+
 }

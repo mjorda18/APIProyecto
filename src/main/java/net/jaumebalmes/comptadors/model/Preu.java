@@ -16,4 +16,35 @@ public class Preu {
     public Integer fi;
     public Double valor;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getInici() {
+        return inici;
+    }
+
+    public void setInici(Integer inici) {
+        this.inici = inici;
+    }
+
+    public Integer getFi() {
+        return fi;
+    }
+
+    public void setFi(Integer fi) {
+        this.fi = fi;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
 }
