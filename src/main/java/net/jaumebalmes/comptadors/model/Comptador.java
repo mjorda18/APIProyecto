@@ -12,7 +12,6 @@ public class Comptador {
 
 
     String adreca;
-    String propietari;
     String codi;
 
 
@@ -68,14 +67,6 @@ public class Comptador {
         this.adreca = adreca;
     }
 
-    public String getPropietari() {
-        return propietari;
-    }
-
-    public void setPropietari(String propietari) {
-        this.propietari = propietari;
-    }
-
     public String getCodi() {
         return codi;
     }
@@ -84,4 +75,13 @@ public class Comptador {
         this.codi = codi;
     }
 
+    @Override
+    public String toString() {
+        return "Comptador{" +
+                "id=" + id +
+                ", adreca='" + adreca + '\'' +
+                ", codi='" + codi + '\'' +
+                ", client=" + client +
+                '}';
+    }
 }

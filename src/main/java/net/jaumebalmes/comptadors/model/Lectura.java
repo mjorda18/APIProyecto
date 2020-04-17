@@ -1,5 +1,7 @@
 package net.jaumebalmes.comptadors.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,6 +11,9 @@ public class Lectura {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+    Date data;
+    Double valor;
 
     @ManyToOne
     Comptador comptador;
@@ -45,7 +50,12 @@ public class Lectura {
         this.valor = valor;
     }
 
-    Date data;
-    Double valor;
-
+    @Override
+    public String toString() {
+        return "Lectura{" +
+                "id=" + id +
+                ", data=" + data +
+                ", valor=" + valor +
+                '}';
+    }
 }
