@@ -1,8 +1,9 @@
 package net.jaumebalmes.comptadors;
 
-import net.jaumebalmes.comptadors.model.Client;
-import net.jaumebalmes.comptadors.model.Comptador;
-import net.jaumebalmes.comptadors.model.Lectura;
+
+import net.jaumebalmes.comptadors.model.Emp;
+import net.jaumebalmes.comptadors.model.Service;
+import net.jaumebalmes.comptadors.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import net.jaumebalmes.comptadors.controllers.FacturaController;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
@@ -33,69 +33,85 @@ public class Application {
     @Autowired
     RestTemplate restTemplate;
 
-    private Lectura createLectura(Lectura lectura) {
+    private Service createService(Service service) {
         String applicationURL = "http://localhost:8080/controlGas/";
 
-        String createLecturaURL = applicationURL + "Lectura/";
+        String createLecturaURL = applicationURL + "Service/";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<Lectura> request =
-                new HttpEntity<Lectura>(lectura, headers);
+        HttpEntity<Service> request =
+                new HttpEntity<Service>(service, headers);
 
-        Lectura lecturaResponse = restTemplate.
-                postForObject(createLecturaURL, request, Lectura.class);
+        Service serviceResponse = restTemplate.
+                postForObject(createLecturaURL, request, Service.class);
 
-        return lecturaResponse;
+        return serviceResponse;
     }
 
-    private Comptador createComptador(Comptador comptador) {
+    private Emp createEmp(Emp emp) {
         String applicationURL = "http://localhost:8080/controlGas/";
 
-        String createComptadorURL = applicationURL + "Comptador/";
+        String createEmpURL = applicationURL + "Emp/";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<Comptador> request =
-                new HttpEntity<Comptador>(comptador, headers);
+        HttpEntity<Emp> request =
+                new HttpEntity<Emp>(emp, headers);
 
-        Comptador comptadorResponse = restTemplate.
-                postForObject(createComptadorURL, request, Comptador.class);
+        Emp empResponse = restTemplate.
+                postForObject(createEmpURL, request, Emp.class);
 
-        return comptadorResponse;
+        return empResponse;
     }
 
-    private Comptador actualitzaComptador(Comptador comptador) {
+    private Emp actualitzaComptador(Emp comptador) {
 
         String applicationURL = "http://localhost:8080/controlGas/";
 
-        String createComptadorURL = applicationURL + "Comptador/";
+        String createEmpURL = applicationURL + "Emp/";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<Comptador> request =
-                new HttpEntity<Comptador>(comptador, headers);
+        HttpEntity<Emp> request =
+                new HttpEntity<Emp>(comptador, headers);
 
-        HttpEntity<Comptador> response = restTemplate.exchange(createComptadorURL, HttpMethod.PUT, request, Comptador.class);
-        Comptador comptadorResponse = response.getBody();
+        HttpEntity<Emp> response = restTemplate.exchange(createEmpURL, HttpMethod.PUT, request, Emp.class);
+        Emp empResponse = response.getBody();
 
-        return comptadorResponse;
+        return empResponse;
     }
 
-    private Client createClient(Client client) {
+    private User createClient(User user) {
         String applicationURL = "http://localhost:8080/controlGas/";
 
-        String createClientURL = applicationURL + "Client/";
+        String createUserURL = applicationURL + "User/";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<Client> request =
-                new HttpEntity<Client>(client, headers);
+        HttpEntity<User> request =
+                new HttpEntity<User>(user, headers);
 
-        Client clientResponse = restTemplate.
-                postForObject(createClientURL, request, Client.class);
+        User userResponse = restTemplate.
+                postForObject(createUserURL, request, User.class);
 
-        return clientResponse;
+        return userResponse;
+    }
+    private User actualitzaUser(User user) {
+
+        String applicationURL = "http://localhost:8080/controlGas/";
+
+        String createUserURL = applicationURL + "User/";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<User> request =
+                new HttpEntity<User>(user, headers);
+
+        HttpEntity<User> response = restTemplate.exchange(createUserURL, HttpMethod.PUT, request, User.class);
+        User userResponse = response.getBody();
+
+        return userResponse;
     }
 
 
@@ -106,51 +122,38 @@ public class Application {
 
 
             // create user
-            Client client = new Client();
-            client.setNom("Pep");
-            client.setCognoms("Gaig Capdemunt");
-            client.setDni("33456789P");
-            Client clientRemote = createClient(client);
-            log.info(clientRemote.toString());
+            User user = new User();
+            user.setName("Pep");
+            user.setSurename("Gaig Capdemunt");
+            user.setUserName("pepG");
+            user.setPassword("pepegaca");
+            user.setPhone("9090909");
+            user.setEmail("pep@gmail.com");
+            user.setAge(29);
+            user.setInmune(true);
+            user.setPoblation("Barcelona");
+            User userRemote = createClient(user);
+            log.info(userRemote.toString());
 
-            // create comptador
-            Comptador comptador = new Comptador();
-            comptador.setCodi("124F");
-            comptador.setAdreca("Carrer Peu de la Creu 23, Manresa");
-            comptador.setClient(clientRemote);
+            // create emp
+            Emp emp = new Emp();
+            emp.setName("Sanitat");
+            emp.setAdress("Carrer Peu de la Creu 23, Manresa");
+            emp.setDescription("Sanitat General");
+            emp.setEmail("sanit@gmail.com");
+            emp.setNumber(5);
 
-            Comptador comptadorRemote=createComptador(comptador);
-            log.info(comptadorRemote.toString());
+            Emp empRemote=createEmp(emp);
+            log.info(empRemote.toString());
 
-            // create lectura
-            Lectura lectura = new Lectura();
-            lectura.setData(new Date());
-            lectura.setComptador(comptadorRemote);
-            lectura.setValor(234567.34);
-            Lectura lecturaRemote = createLectura(lectura);
-            log.info(lecturaRemote.toString());
+            // create Service
+            Service service = new Service();
+            service.setType("Gestio");
+            service.setDescripcio("Ajuda en la gestio de medicaments");
+            service.setEmpresa(empRemote);
+            Service serviceRemote = createService(service);
+            log.info(serviceRemote.toString());
 
-            //add ultima lectura to comptador
-            comptadorRemote.setUltimaLecturaFacturada(lecturaRemote);
-            comptadorRemote = actualitzaComptador(comptadorRemote);
-            log.info(comptadorRemote.toString());
         };
     }
-/*
-    @Bean CommandLineRunner createTestScenario() {
-        return (args) -> {
-
-            FacturaController facturaController = new FacturaController();
-            facturaController.calculaFactures();
-        };
-    }
-
-    @Bean CommandLineRunner calculaFactures() {
-        return (args) -> {
-            FacturaController facturaController = new FacturaController();
-            facturaController.calculaFactures();
-        };
-    }
-
-*/
 }
