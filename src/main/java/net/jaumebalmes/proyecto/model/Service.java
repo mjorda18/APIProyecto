@@ -1,9 +1,6 @@
-package net.jaumebalmes.comptadors.model;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
+package net.jaumebalmes.proyecto.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 public class Service {

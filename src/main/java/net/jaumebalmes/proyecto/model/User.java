@@ -1,7 +1,6 @@
-package net.jaumebalmes.comptadors.model;
+package net.jaumebalmes.proyecto.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 public class User {

@@ -1,9 +1,9 @@
-package net.jaumebalmes.comptadors;
+package net.jaumebalmes.proyecto;
 
 
-import net.jaumebalmes.comptadors.model.Emp;
-import net.jaumebalmes.comptadors.model.Service;
-import net.jaumebalmes.comptadors.model.User;
+import net.jaumebalmes.proyecto.model.Emp;
+import net.jaumebalmes.proyecto.model.Service;
+import net.jaumebalmes.proyecto.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,6 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Date;
 
 @SpringBootApplication
 public class Application {

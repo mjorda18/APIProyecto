@@ -1,10 +1,7 @@
-package net.jaumebalmes.comptadors.dao;
+package net.jaumebalmes.proyecto.dao;
 
-import net.jaumebalmes.comptadors.model.Service;
+import net.jaumebalmes.proyecto.model.Service;
 import org.springframework.data.repository.CrudRepository;
-
-import java.util.Date;
-import java.util.List;
 
 public interface ServiceRepository extends CrudRepository<Service,Long> {
 
