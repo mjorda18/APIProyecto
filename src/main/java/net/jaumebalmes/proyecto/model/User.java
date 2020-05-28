@@ -4,18 +4,14 @@ import javax.persistence.*;
 
 @Entity
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
     String userName;
     String password;
-
-    String name;
-    String surename;
     String phone;
-    Integer age;
-    String poblation;
     String email;
     Boolean inmune;
 
@@ -43,46 +39,6 @@ public class User {
         this.password = password;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurename() {
-        return surename;
-    }
-
-    public void setSurename(String surename) {
-        this.surename = surename;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public String getPoblation() {
-        return poblation;
-    }
-
-    public void setPoblation(String poblation) {
-        this.poblation = poblation;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -105,11 +61,7 @@ public class User {
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", surename='" + surename + '\'' +
                 ", phone='" + phone + '\'' +
-                ", age=" + age +
-                ", poblation='" + poblation + '\'' +
                 ", email='" + email + '\'' +
                 ", inmune=" + inmune +
                 '}';
