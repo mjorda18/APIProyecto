@@ -8,11 +8,14 @@ public class Emp {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-String name;
-String description;
-Integer number;
-String email;
-String adress;
+
+    private String UserName;
+    private String password;
+    private String name;
+    private String description;
+    private Integer number;
+    private String email;
+    private String adress;
 
 
     @OneToMany(mappedBy = "empresa")
@@ -24,6 +27,22 @@ String adress;
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getName() {
@@ -72,18 +91,5 @@ String adress;
 
     public void setServices(List<Service> services) {
         Services = services;
-    }
-
-    @Override
-    public String toString() {
-        return "Emp{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", number=" + number +
-                ", email='" + email + '\'' +
-                ", adress='" + adress + '\'' +
-                ", Services=" + Services +
-                '}';
     }
 }

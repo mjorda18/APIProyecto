@@ -7,22 +7,14 @@ public class Service {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-    String type;
-    String Descripcio;
+    private Long id;
+    private String type;
+    private String description;
+
+    private Long idEmp;
 
     @ManyToOne
     Emp empresa;
-
-    @Override
-    public String toString() {
-        return "Service{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", Descripcio='" + Descripcio + '\'' +
-                ", empresa=" + empresa +
-                '}';
-    }
 
     public Long getId() {
         return id;
@@ -40,12 +32,20 @@ public class Service {
         this.type = type;
     }
 
-    public String getDescripcio() {
-        return Descripcio;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripcio(String descripcio) {
-        Descripcio = descripcio;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Long getIdEmp() {
+        return idEmp;
+    }
+
+    public void setIdEmp(Long idEmp) {
+        this.idEmp = idEmp;
     }
 
     public Emp getEmpresa() {

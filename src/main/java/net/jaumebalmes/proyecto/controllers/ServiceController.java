@@ -4,11 +4,13 @@ package net.jaumebalmes.proyecto.controllers;
 import net.jaumebalmes.proyecto.dao.ServiceRepository;
 
 import net.jaumebalmes.proyecto.model.Service;
+import net.jaumebalmes.proyecto.model.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
@@ -24,8 +26,16 @@ public class ServiceController {
             return new ResponseEntity<Service>(Service, HttpStatus.OK);
         } else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-
     }
+
+    @GetMapping("/controlApp/Service/")
+    public ResponseEntity<ArrayList<Service>> getAllService() {
+        Iterable<Service> EmpOpt = serviceRepository.findAll();
+        ArrayList<Service> result = new ArrayList<>();
+        EmpOpt.forEach(result::add);
+        return new ResponseEntity<ArrayList<Service>>(result,HttpStatus.OK);
+    }
+
 
     @PostMapping("/controlApp/Service/")
     public ResponseEntity<Service> addService(@RequestBody Service service) {

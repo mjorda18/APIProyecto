@@ -23,6 +23,14 @@ public class User {
         this.id = id;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -55,15 +63,4 @@ public class User {
         this.inmune = inmune;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", inmune=" + inmune +
-                '}';
-    }
 }
